@@ -1,0 +1,18 @@
+.DS_Store
+*.pyc
+__pycache__/
+.venv/
+venv/
+.env
+*.log
+tmp/
+dist/
+build/
+
+# Do not commit live Hermes profile state.
+.hermes/
+sessions/
+logs/
+state.db
+memories/
+
