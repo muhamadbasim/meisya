@@ -42,6 +42,8 @@ hermes chat -s agency-code-reviewer -q "Review the current git diff."
 - `docs/AUDIT.md` — audit notes for this packaged snapshot.
 - `docs/HERMES_COMPATIBILITY.md` — layout and usage notes based on Hermes docs.
 - `docs/SKILLS_INDEX.md` — generated index of all packaged skills.
+- `hermes-profile/` — sanitized Hermes server profile snapshot: SOUL, memory,
+  selected config, cron documentation, and custom local skills.
 - `manifest.json` — machine-readable skill manifest.
 
 ## Useful Skills
@@ -117,6 +119,7 @@ runtime data.
 ├── source/agency-agents/          # Source prompts and converter
 ├── scripts/                       # Install and audit helpers
 ├── docs/                          # Audit, compatibility, skill index
+├── hermes-profile/                 # Sanitized Hermes profile snapshot
 ├── manifest.json                  # Machine-readable skill manifest
 ├── AGENTS.md                      # Instructions for agents editing this repo
 ├── NOTICE.md                      # Attribution and source notes

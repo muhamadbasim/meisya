@@ -1,0 +1,258 @@
+{
+  "jobs": [
+    {
+      "id": "068138233ed3",
+      "name": "whatsapp-discover-groups-and-daily-summary",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "44 4 * * *",
+        "display": "44 4 * * *"
+      },
+      "schedule_display": "44 4 * * *",
+      "created_at": "2026-05-22T14:29:17.909190+08:00",
+      "last_status": "ok",
+      "model": null,
+      "provider": null,
+      "enabled_toolsets": null,
+      "no_agent": true,
+      "script": "whatsapp_group_discovery_and_summary.py",
+      "skill": null,
+      "skills": [],
+      "prompt": "Cek group WhatsApp baru dari bridge log, tambahkan otomatis ke allowlist jika ditemukan, lalu kirim ringkasan daily summary untuk setiap group WhatsApp hanya ke chat origin/DM ini (jangan balas ke group WhatsApp). Format wajib untuk setiap group:\n\nRingkasan group wa\n\nGroup: <nama group>\n\n1. <Judul Topik>:\n<Narasi detail dalam bahasa Indonesia. Sebut nama orang/nomor yang terlibat, konteks teknis, URL, dan nuansa diskusi. Jangan terlalu pendek.>\n\n2. <Judul Topik>:\n<Narasi detail...>\n\nLink Penting:\n- <URL penting, jika ada>\n\nPertanyaan Belum Terjawab:\n- <pertanyaan atau hal yang masih perlu dicek>\n\nFollow Up:\n- <aksi lanjutan yang masuk akal>\n\nStatistik: <total pesan, jumlah anggota aktif, dan member paling aktif kalau data tersedia. Jika tidak tersedia tulis bahwa statistik akan ditampilkan kalau datanya tersedia.>\n\nCatatan penting: jangan gunakan format “📋 Rekap semua group WhatsApp”. Jangan gabungkan semua group tanpa baris Group:. Jangan kirim ke WhatsApp group; kirim hanya ke origin/DM.",
+      "repeat": {
+        "times": null
+      },
+      "deliver": "<redacted-route>",
+      "origin": {
+        "platform": "whatsapp",
+        "chat_name": "Muhamad Basim",
+        "chat_id": "<redacted>",
+        "thread_id": null
+      }
+    },
+    {
+      "id": "dcd677ba6eab",
+      "name": "whatsapp-discover-groups-and-daily-summary-noon",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 12 * * *",
+        "display": "0 12 * * *"
+      },
+      "schedule_display": "0 12 * * *",
+      "created_at": "2026-05-25T05:50:37.413958+07:00",
+      "last_status": "ok",
+      "model": null,
+      "provider": null,
+      "enabled_toolsets": null,
+      "no_agent": true,
+      "script": "whatsapp_group_discovery_and_summary.py",
+      "skill": null,
+      "skills": [],
+      "prompt": "Cek group WhatsApp baru dari bridge log, tambahkan otomatis ke allowlist jika ditemukan, lalu kirim ringkasan pesan baru semua group WhatsApp ke chat asal. Jangan kirim balasan ke group WhatsApp; semua output hanya ke DM/origin.",
+      "repeat": {
+        "times": null
+      },
+      "deliver": "<redacted-route>",
+      "origin": {
+        "platform": "telegram",
+        "chat_name": "Basim",
+        "chat_id": "<redacted>",
+        "thread_id": null
+      }
+    },
+    {
+      "id": "a6e577b18f7d",
+      "name": "Basim general viral/tips carousel to Repliz multi-platform",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 12 * * *",
+        "display": "15 12 * * *"
+      },
+      "schedule_display": "15 12 * * *",
+      "created_at": "2026-06-09T10:20:34.098142+07:00",
+      "last_status": "ok",
+      "model": "gpt-5.5",
+      "provider": "custom:growthcircle",
+      "enabled_toolsets": [
+        "web",
+        "terminal",
+        "file"
+      ],
+      "no_agent": false,
+      "script": null,
+      "skill": "senang-carousel-generator",
+      "skills": [
+        "senang-carousel-generator",
+        "threads-content-and-scheduling",
+        "basim-carousel-quality-control"
+      ],
+      "prompt": "Tugas otomatis Basim — carousel multi-platform ke Repliz. Approval eksplisit sudah diberikan oleh Basim untuk job evergreen/low-risk ini. Gunakan provider/model job saat ini; jangan tampilkan credential, dan jangan pakai hashtag.\n\nTujuan utama: isi konten dan carousel harus mengikuti kualitas/audit seperti run sukses 15 Juni 2026, bukan prompt ringkas.\nCatatan kualitas visual terbaru: ikuti skill basim-carousel-quality-control dan reference avatar-hologram-square-style. Basim sudah menolak draft yang tidak mirip referensi; referensi approved adalah sumber kebenaran visual. Setiap output carousel harus mengirim/menjadwalkan asset yang match style 1:1 tersebut.\n Jalankan sebagai produksi harian dengan audit sebelum scheduling.\n\nWajib workflow:\n1. Search/current trend dulu pada hari run. Cek sinyal Indonesia terbaru: AI/tools/creator, UMKM/bisnis, workflow manual, Meta Ads/leads, customer follow-up, keamanan digital, ekonomi harian yang aman. Jika ada demo/kebijakan publik/bencana/isu sensitif, jangan auto-post sebagai newsjacking; pakai hanya sebagai konteks ringan atau tahan untuk approval.\n2. Ambil pelajaran dari performa 48 jam terakhir jika bisa via Repliz/statistik: TikTok biasanya kuat untuk MP4 slideshow; Instagram moderat; Threads butuh hook manusiawi/konkret; YouTube perlu title valid, jangan pernah `unknown`.\n3. Buat scoring minimal 3 kandidat angle dengan dimensi: momentum, relatability, shareability/saveability, twist, safety, fit ke Basim. Pilih kandidat tertinggi yang low-risk evergreen.\n4. Hindari angle yang sudah terlalu sering dipakai 48 jam terakhir. Rotasi bucket: AI untuk owner, sistem manual customer follow-up, leads Meta Ads bocor, ide aplikasi stuck, tim kerja dari chat tercecer, AI kaku karena minim konteks, SOP/keputusan kecil nunggu owner.\n5. Content mechanics seperti kemarin: konkret-human, reflective, saveable. Boleh adapt mekanik @ceritaberkelas hanya untuk isi: parabel/analogi sederhana, satu ide per slide, twist halus, hidden system, checklist kecil, payoff reflektif. Jangan meniru literal wording, logo, ilustrasi, atau persona.\n6. Visual wajib mengikuti style referensi approved Basim, bukan mockup generik: square 1:1 1080x1080, background putih polos, teks 3 baris lowercase di tengah/atas, satu keyword bold per baris, sans-serif clean, avatar 3D + hologram/dashboard biru kecil di bottom-right, subtle chevron bawah, tanpa border, tanpa serif, tanpa paragraf panjang, tanpa full-background futuristik. Jika SenangCarousels API gagal karena quota/approval guard, fallback lokal hanya boleh dipakai jika tetap sangat mirip style referensi ini; laporkan jelas sebagai fallback, bukan API output. Jangan kembali ke 1080x1350 kecuali Basim eksplisit minta format 4:5.\n7. Struktur carousel 7–10 slide jika memungkinkan:\n   - Slide 1: hook parabel/analogi konkret yang relatable.\n   - Slide 2: twist/konflik, yang terlihat cepat/rajin/besar belum tentu menang.\n   - Slide 3: tarik ke owner/bisnis/AI harian.\n   - Slide 4–5: hidden system: proses manual, keputusan kecil nunggu owner, lead bocor, follow-up lupa, SOP tidak tercatat, AI dipakai tanpa konteks.\n   - Slide 6–7: contoh mikro nyata.\n   - Slide 8: checklist kecil yang saveable.\n   - Slide 9/10: payoff reflektif + CTA ringan.\n8. Caption publik pendek 1–2 baris, soft-curiosity, natural, tanpa hashtag, bukan ringkasan penuh.\n9. Sebelum schedule, cek collision Repliz/schedule/content terbaru. Jangan menumpuk batch carousel dengan Threads evergreen/radar dalam rentang ±45 menit; jika perlu geser ke slot aman berikutnya. Maksimal 1 batch carousel per run.\n10. Validasi media sebelum POST Repliz: slide PNG 1080x1350, ZIP valid/testzip None, public image URLs HTTP 200, MP4 1080x1350 public URL HTTP 200, YouTube title valid.\n11. Schedule via Repliz cross-platform: Threads + Instagram sebagai album; TikTok + YouTube sebagai MP4 slideshow/video. Stagger 2–5 menit jika perlu. Verifikasi schedule ID/status pending jika endpoint tersedia.\n12. Output laporan seperti kemarin, format:\n\nLaporan carousel otomatis — <tanggal WIB>\n\nTren/sinyal yang dicek:\n- ...\n\nPerforma Repliz 48 jam terakhir:\n- ...\n\nSkor kandidat:\n1. ... Skor ...\n2. ... Skor ...\n3. ... Skor ...\n\nAngle terpilih:\n- ...\n\nAudit konten:\n- Kenapa aman/low-risk\n- Kenapa cocok untuk carousel/saveable\n- Kenapa tidak mengulang angle 48 jam terakhir\n\nStatus:\n- Auto-scheduled / butuh approval jika sensitif\n- Collision check: ...\n\nValidasi media:\n- jumlah slide dan dimensi\n- ZIP valid\n- public URLs\n- MP4\n\nSchedule Repliz:\n- Threads — <WIB> scheduleId: ...\n- Instagram — <WIB> scheduleId: ...\n- TikTok — <WIB> scheduleId: ...\n- YouTube — <WIB> scheduleId: ...\n\nLocal artifact:\nMEDIA:<zip path>\n\nHard rules:\n- Jangan membocorkan Repliz/Gemini/API credentials.\n- Jangan memasukkan label internal seperti topic/draft/judul/skor/sumber internal ke caption publik.\n- Jangan pakai hashtag.\n- Jangan posting berita/current event sensitif tanpa approval.\n- Jangan klaim semua sukses jika satu platform gagal; laporkan per platform.",
+      "repeat": {
+        "times": 999999
+      },
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_name": "AGENTIC COUNTRY",
+        "chat_id": "<redacted>",
+        "thread_id": "<redacted>"
+      }
+    },
+    {
+      "id": "860a27557128",
+      "name": "Basim Threads viral radar + approval queue",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "10 7,12,17,21 * * *",
+        "display": "10 7,12,17,21 * * *"
+      },
+      "schedule_display": "10 7,12,17,21 * * *",
+      "created_at": "2026-06-10T23:37:26.906872+07:00",
+      "last_status": "ok",
+      "model": "gpt-5.4",
+      "provider": "openai-codex",
+      "enabled_toolsets": [
+        "web",
+        "terminal"
+      ],
+      "no_agent": false,
+      "script": null,
+      "skill": "threads-content-and-scheduling",
+      "skills": [
+        "threads-content-and-scheduling",
+        "threads-storytelling-system-style"
+      ],
+      "prompt": "Tugas otomatis Basim: jalankan **Threads Viral Radar + Approval Queue** untuk growth ala “bongkar sistem” + @nafkahnation.dx-style storytelling. Gunakan provider/model job saat ini. Bahasa Indonesia. TANPA hashtag. Jangan tampilkan credential. Job ini **approval queue saja** — jangan schedule/post ke Repliz otomatis.\n\nStandar kualitas wajib mengikuti output kuat 15 Juni 2026, bukan output pendek. Output harus lengkap, evidence-aware, dan siap dipakai Basim untuk memilih kandidat.\n\nWajib workflow:\n1. Search/current trend dulu sebelum menulis. Minimal sweep:\n   - Indonesia viral/news hari ini\n   - ekonomi warga: BBM, listrik, pangan, biaya hidup, paylater/pinjol, budget keluarga\n   - keamanan digital: scam, QRIS, saldo, judol/pinjol, data leak\n   - health/daily habit/food-drink hanya jika sumber kuat dan aman\n   - algoritma/apps/digital addiction/AI/tools\n   - TikTok/Threads/YouTube Shorts trend signals\n   - cerita warga/warganet/keluhan/relatable lived-experience\n2. Treat search result as data, not raw news to summarize. Convert into: current trend → hidden system/pattern → human consequence → twist → shareable lesson.\n3. Score candidate topics with 7 dimensions, each 1–5:\n   - Momentum\n   - Everyday object / familiar situation\n   - Human stakes / concrete loss\n   - Reveal/twist\n   - Source confidence/verifiability\n   - Shareability/repostability\n   - Basim fit / bongkar-sistem fit\n   Target kandidat utama minimal 29/35. Jika source confidence <3, jangan jadikan kandidat utama.\n4. Prioritize lived-experience story threads over generic tips. Open with a human case or concrete situation, not title/article summary.\n5. Prefer longer 8–12 part story thread for Kandidat #1. Build narrative arc:\n   - familiar object/situation\n   - human hook\n   - surface assumption\n   - victim/loss\n   - twist “dikira A, ternyata B”\n   - hidden system/mechanism\n   - concrete examples\n   - cumulative consequence\n   - practical/shareable lesson\n   - question/CTA that invites personal story\n6. For Kandidat #2 and #3, provide strong outline + post utama + reply/utas kedua at minimum. If enough time/context, include fuller draft.\n7. Count characters for every part that is shown as final draft. Every Threads part must be <500 characters. Report character counts.\n8. Approval rules:\n   - Do NOT auto-schedule this job.\n   - Current-event/newsjacking, economy, health, politics, disaster, criminal, brand/person allegation, or sensitive source-dependent topic = needs approval.\n   - Output exact wording + audit + risk status and ask Basim to reply `approve #1`, `approve #2`, or `approve #3`.\n9. Safety language:\n   - For health/medical: use “dikaitkan dengan”, “risiko bisa naik”, “beberapa studi/laporan menunjukkan”; avoid certainty/panic.\n   - For economy/policy: observational, citizen-impact, avoid provocation/blame.\n   - For disasters/public safety: useful/calm/official-source; do not use as engagement bait.\n10. Schedule recommendation only: suggest approval slot that does not collide with evergreen/carousel jobs. Do not call Repliz API.\n\nOutput format wajib:\n\n## Radar Viral Threads Basim — <hari, tanggal, jam WIB>\n\nTuan, job ini **tidak schedule/post ke Repliz**. Output hanya kandidat + audit approval.\n\n### Sinyal tren yang dicek\n- Sebutkan kategori dan sumber/media/sinyal yang dicek.\n- Cantumkan link sumber utama untuk kandidat yang dipakai.\n\n### Ringkasan radar hari ini\n- Paling kuat untuk growth/repost: ...\n- Kandidat kuat kedua: ...\n- Kandidat ketiga: ...\n- Topik yang ditahan karena sensitif/kurang aman: ...\n\n### Skor mentah ringkas\n- Kandidat A — xx/35\n- Kandidat B — xx/35\n- Kandidat C — xx/35\n- Kandidat lain yang ditolak + alasan singkat\n\n---\n\n## Top 3 kandidat utas\n\n### 1. “<judul internal kandidat>” — skor xx/35 — status: wajib approval / aman evergreen\n- Momentum: x/5\n- Everyday object: x/5\n- Human stakes: x/5\n- Reveal/twist: x/5\n- Source confidence: x/5\n- Shareability: x/5\n- Basim fit: x/5\n\nKenapa kuat/repostable:\n- ...\n\nRisiko:\n- ...\n\nBukti momentum/sumber konteks:\n- <source title/date/link>\n\nRekomendasi slot jika approve:\n- <WIB>, aman dari collision ...\n\nJumlah bagian:\n- 8–12 bagian\n\nChar count:\n- part 1: ..., part 2: ..., dst.\n\nDraft utas:\n```text\n<part 1>\n---\n<part 2>\n---\n...\n```\n\n---\n\n### 2. “<judul>” — skor xx/35 — status: ...\n- score breakdown\n- post utama\n- reply/utas kedua\n- character counts\n- audit risiko\n- rekomendasi slot\n\n---\n\n### 3. “<judul>” — skor xx/35 — status: ...\n- score breakdown\n- post utama\n- reply/utas kedua\n- character counts\n- audit risiko\n- rekomendasi slot\n\n---\n\n## Prioritas approval\n1. Kandidat #1 — alasan\n2. Kandidat #2 — alasan\n3. Kandidat #3 — alasan\n\nBalas `approve #1`, `approve #2`, atau `approve #3` kalau mau dijadwalkan ke Repliz. Jangan pakai hashtag.",
+      "repeat": {
+        "times": 999999
+      },
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_name": "AGENTIC COUNTRY",
+        "chat_id": "<redacted>",
+        "thread_id": "<redacted>"
+      }
+    },
+    {
+      "id": "5d040e14aeb5",
+      "name": "Basim Threads aggressive evergreen publisher",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8,10,13,16,19,22 * * *",
+        "display": "0 8,10,13,16,19,22 * * *"
+      },
+      "schedule_display": "0 8,10,13,16,19,22 * * *",
+      "created_at": "2026-06-10T23:52:56.618218+07:00",
+      "last_status": "ok",
+      "model": "gpt-5.4",
+      "provider": "openai-codex",
+      "enabled_toolsets": [
+        "web",
+        "terminal"
+      ],
+      "no_agent": false,
+      "script": null,
+      "skill": "threads-content-and-scheduling",
+      "skills": [
+        "threads-content-and-scheduling",
+        "threads-storytelling-system-style"
+      ],
+      "prompt": "Tugas otomatis Basim: jalankan **aggressive human-like evergreen Threads publishing** via Repliz. Approval operasional untuk evergreen rendah risiko sudah diberikan. Bahasa Indonesia. Panggil user Tuan di laporan. Jangan tampilkan credential. Jangan pakai hashtag di post body. Job ini boleh auto-schedule **hanya** untuk evergreen/low-risk text post, bukan current-event approval queue.\n\nStandar kualitas wajib mengikuti mode agresif yang bagus kemarin: natural, tidak templated, problem-first, twist jelas, dan tidak repetitif. Fokusnya brutal di eksperimen hook dan angle, bukan spam.\n\nAturan utama:\n1. Setiap run buat **1 post text Threads saja**, bukan batch, bukan carousel.\n2. Lakukan light search/check context dulu sebelum menulis:\n   - sinyal tren ringan Indonesia / lived-experience / ekonomi warga / digital habits / AI pemula / owner bottleneck\n   - cek performa/recent content Threads Basim via Repliz 48 jam terakhir bila memungkinkan\n   - gunakan hasil itu untuk memilih angle yang relevan dan menghindari pengulangan\n3. Wajib hindari repetisi angle/hook. Jika 2 post terbaru membahas owner jadi sistem manual / alat terlalu banyak / semua keputusan balik ke owner, **jangan** pilih angle yang terlalu mirip di run berikutnya kecuali benar-benar tidak ada opsi lain.\n4. Rotasi pilar evergreen. Prioritas rotasi:\n   - money leaks: paylater, subscription, promo, biaya kecil berulang\n   - digital habits / algorithm traps / notification fatigue\n   - humane beginner AI: konteks > prompt canggih, draft awal vs suara akhir, arah vs alat\n   - owner bottlenecks / admin/follow-up / sistem kecil\n   - small business execution / leads bocor / laporan nunggu owner\n   - low-risk daily habits with evidence-aware language only\n5. Rotasi hook pattern. Jangan reuse opener yang sama berturut-turut. Variasikan pola seperti:\n   - “gw kira A, ternyata B”\n   - “yang bahaya bukan X, tapi polanya”\n   - “ini kelihatannya kecil karena efeknya nggak langsung”\n   - “lo kira ini kebetulan, padahal sistemnya didesain begitu”\n   - “ada satu kebiasaan kecil yang sering lolos dari hitungan”\n6. Struktur copy:\n   - mulai dari orang/situasi konkret\n   - masalah yang kelihatan biasa\n   - korban/loss jelas\n   - twist / reversal\n   - hidden system/mechanism\n   - pelajaran kecil / pintu komentar natural\n7. Panjang body target 180–480 karakter. Wajib hitung karakter dengan tool sebelum final schedule. Jangan asal kira-kira.\n8. Tone:\n   - casual, manusiawi, sedikit imperfect\n   - jangan hard selling\n   - jangan terdengar artikel, brosur, atau template AI\n   - tanpa hashtag, tanpa label internal, tanpa score/audit di body\n9. Safety gate:\n   - Auto-schedule hanya untuk evergreen rendah risiko\n   - Jangan auto-schedule current-event/newsjacking, politik, bencana, kriminal, tuduhan brand/person, health/medical sensitif, atau topik yang butuh source ketat\n   - Jika topik terbaik ternyata sensitif/current-event, jangan post; laporkan singkat bahwa angle ditahan untuk approval queue\n10. Scheduling:\n   - gunakan Repliz official scheduling saja\n   - schedule 10–25 menit ke depan\n   - hindari burst/tabrakan dengan slot lain\n   - verifikasi response schedule ID dan, bila bisa, status pending\n11. Verification/report:\n   - laporkan platform, akun, status Repliz, risiko, karakter, waktu WIB, schedule ID, ringkasan angle, dan body final\n   - jangan klaim sukses kalau belum ada schedule ID\n   - jika gagal schedule, laporkan error nyata\n\nHard anti-regression rules:\n- Jangan ulang angle yang terlalu dekat dengan 2 post terakhir.\n- Jangan default terus ke “owner jadi sistem manual” jika baru saja diposting.\n- Jangan bikin copy generik tips. Harus ada cerita/situasi dan twist.\n- Jangan pakai topik viral sensitif sebagai evergreen.\n- Jangan menurunkan cadence; cukup perbaiki angle rotation dan kualitas hook.\n\nFormat output wajib:\n\nTuan, mode aggressive human-like publishing <berhasil / ditahan / gagal> untuk 1 post evergreen Threads via Repliz.\n\nAudit singkat:\n- Platform: Threads\n- Akun: Basim / @muhamadbasim7\n- Status Repliz: <pending / ditahan / error>\n- Risiko: <rendah / ditahan>\n- Karakter: <n>\n- Hashtag: tidak ada\n- Topic/title metadata: <kosong / ditahan>\n\nWaktu schedule:\n- <WIB atau ditahan>\n\nSchedule ID:\n- <id atau n/a>\n\nRingkasan konten:\n- Angle: ...\n- Hook pattern: ...\n- Alasan rotasi: ...\n\nBody final:\n```text\n...\n```\nValidasi sebelum output: sebutkan 2 angle/hook terbaru yang dihindari, alasan angle baru tidak repetitif, character count nyata, dan scheduleId Repliz jika berhasil. Jika Repliz/API/model gagal, laporkan error nyata singkat dan jangan klaim sukses.\n",
+      "repeat": {
+        "times": 999999
+      },
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_name": "AGENTIC COUNTRY",
+        "chat_id": "<redacted>",
+        "thread_id": "<redacted>"
+      }
+    },
+    {
+      "id": "eea29a1d6546",
+      "name": "News Digest — Indonesia, AI, Global — pagi & malam",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 6,20 * * *",
+        "display": "0 6,20 * * *"
+      },
+      "schedule_display": "0 6,20 * * *",
+      "created_at": "2026-06-11T06:45:25.858773+07:00",
+      "last_status": "ok",
+      "model": "gpt-5.4",
+      "provider": "openai-codex",
+      "enabled_toolsets": [
+        "web",
+        "terminal"
+      ],
+      "no_agent": false,
+      "script": null,
+      "skill": "daily-news-briefings",
+      "skills": [
+        "daily-news-briefings"
+      ],
+      "prompt": "Setiap kali job ini berjalan, buat News Digest terbaru untuk Basim/Tuan dalam Bahasa Indonesia.\n\nKonten: ringkas berita Indonesia, AI, dan global yang relevan. Gunakan web search/current sources, sebutkan sumber/link, ringkas, kritis, evidence-aware. Jangan tampilkan credential. Deliver sesuai konfigurasi job.\n\nJika model/provider sempat error sebelumnya, tetap jalankan dengan provider/model job saat ini. Gunakan web search terbaru; jangan mengandalkan memori. Output harus ringkas tapi evidence-aware: Indonesia, AI/teknologi, global, dampak untuk Basim/Tuan, link sumber, risiko/asumsi. Jangan tampilkan credential.",
+      "repeat": {
+        "times": 999999
+      },
+      "deliver": "<redacted-route>",
+      "origin": {
+        "platform": "telegram",
+        "chat_name": "AGENTIC COUNTRY",
+        "chat_id": "<redacted>",
+        "thread_id": "<redacted>"
+      }
+    },
+    {
+      "id": "94aa0c7dc180",
+      "name": "Basim Threads daily Repliz analytics + improvement drafts",
+      "enabled": true,
+      "state": "scheduled",
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 7 * * *",
+        "display": "30 7 * * *"
+      },
+      "schedule_display": "30 7 * * *",
+      "created_at": "2026-06-16T07:27:36.682463+07:00",
+      "last_status": "ok",
+      "model": "gpt-5.4",
+      "provider": "openai-codex",
+      "enabled_toolsets": [
+        "web",
+        "terminal"
+      ],
+      "no_agent": false,
+      "script": null,
+      "skill": "threads-content-and-scheduling",
+      "skills": [
+        "threads-content-and-scheduling"
+      ],
+      "prompt": "Tugas harian untuk Basim: analisa performa Threads dari Repliz, cek view terbaru, lalu buat perbaikan posting untuk hari ini DAN schedule 1 posting evergreen perbaikan ke Repliz memakai API POST /public/schedule.\n\nKredensial Repliz (jangan pernah tampilkan ke output):\n- access key: 2593634501\n- secret key: vs3yhRpJILmdbLrCndgIePnnxJhrBXRi\n- Threads accountId: 6a06e4094492e5f5a8f6d3a4\n\nWajib:\n1. Gunakan skill threads-content-and-scheduling, terutama references/repliz-content-analytics-api.md dan references/repliz-schedule-api.md.\n2. Verifikasi akun dengan GET https://api.repliz.com/public/account/{accountId}; laporkan hanya field aman: name, username, type, isConnected, updatedAt.\n3. Ambil konten terbaru dengan GET https://api.repliz.com/public/content?accountId={accountId}&type=media. Ambil minimal 10 konten terbaru jika tersedia.\n4. Untuk setiap contentId terbaru, ambil statistik dengan GET https://api.repliz.com/public/content/{contentId}/statistic?accountId={accountId}. Normalisasi metrik: views, like, replies, repost, quotes, share.\n5. Cari tren/berita Indonesia terbaru di web sebelum membuat rekomendasi. Prioritaskan politik/kebijakan publik, ekonomi warga, keamanan digital, AI/digital behavior, cerita viral lived-experience, atau isu yang bisa dihubungkan dengan sistem, bisnis, owner fatigue, app idea, dan eksekusi digital. Jangan asal pakai topik random.\n6. Analisis: ranking post by views lalu engagement; bandingkan hook, 2-3 baris awal, target reader, spesifisitas pain, dan CTA. Jangan klaim kausalitas kuat dari sample kecil; pakai “indikasi awal/sementara”.\n7. Buat 3 kandidat draft Threads siap posting, gaya casual curhat/storytelling Indonesia, TANPA hashtag, TANPA topic tag yang terlihat di body, mechanics @nafkahnation.dx: human case → victim/loss → twist → hidden system → lesson.\n8. Untuk setiap draft, hitung karakter secara nyata dengan script/tool. Pastikan tiap bagian <500 karakter. Jika thread multi-part, format sebagai bagian terpisah tanpa awalan angka terlihat di body. Jangan tambahkan hashtag di akhir maupun di bagian manapun.\n9. Pilih 1 kandidat PALING AMAN untuk auto-post: harus evergreen/low-risk dan relevan dengan pola performa. JANGAN auto-schedule kandidat berbasis current-event/newsjacking yang sensitif/berisiko; untuk kandidat seperti itu hanya tampilkan sebagai draft butuh approval.\n10. Schedule kandidat evergreen terpilih ke Repliz dengan:\nPOST https://api.repliz.com/public/schedule\nBasic Auth access:secret\nContent-Type: application/json\nPayload text:\n{\n  \"title\": \"\",\n  \"description\": \"<post body tanpa hashtag>\",\n  \"topic\": \"\",\n  \"type\": \"text\",\n  \"medias\": [],\n  \"additionalInfo\": {\"isAiGenerated\": false, \"isDraft\": false},\n  \"replies\": [],\n  \"accountId\": \"6a06e4094492e5f5a8f6d3a4\",\n  \"scheduleAt\": \"<ISO UTC>\"\n}\nGunakan scheduleAt slot dekat berikutnya minimal 10 menit setelah job berjalan, dibulatkan ke 15 menit terdekat, WIB dikonversi ke UTC. Terima status 200/201 dengan scheduleId sebagai sukses. Verifikasi jika endpoint GET schedule tersedia; minimal laporkan status HTTP dan scheduleId. Jangan tampilkan secret.\n11. Output dalam bahasa Indonesia, ringkas, format:\n\nAnalisa Threads Harian — <tanggal WIB>\n\nAkun:\n- ...\n\nUpdate angka:\n| Post | Tanggal | Views | Like | Replies | Repost/Quotes/Share | Catatan hook |\n\nYang kelihatan bekerja:\n- ...\n\nYang perlu diperbaiki:\n- ...\n\nTren/seed hari ini:\n- ...\n\nDraft perbaikan:\nKandidat A/B/C dengan character count dan audit singkat. Pastikan tidak ada hashtag.\n\nSudah dijadwalkan via Repliz API:\n- Kandidat: ...\n- Waktu WIB: ...\n- scheduleId: ...\n- Status: ...\n\nCatatan:\n- Kandidat news/current-event sensitif tetap butuh approval manual.\n- Secret yang pernah dikirim di chat sebaiknya di-rotate setelah setup.",
+      "repeat": {
+        "times": 999999
+      },
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_name": "AGENTIC COUNTRY",
+        "chat_id": "<redacted>",
+        "thread_id": "<redacted>"
+      }
+    }
+  ]
+}
